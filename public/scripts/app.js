@@ -86,6 +86,10 @@ function checkSubmission() {
   }
 }
 
+function focusNewTweet () {
+  $('.new-tweet').find('textarea').focus();
+}
+
 $(document).ready( function() {
 
 
@@ -118,6 +122,10 @@ $(document).ready( function() {
       event.preventDefault();
       $(this).submit();
     }
+  });
+
+  $('#nav-bar').on('click', 'button', function(event) {
+    $('.new-tweet').slideToggle(100, focusNewTweet);
   });
 });
 

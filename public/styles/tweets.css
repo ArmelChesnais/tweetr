@@ -63,6 +63,7 @@ article.tweet:hover .tweet-icons {
 
 article.tweet .fa {
   padding: 0 2px;
+  cursor: pointer;
 }
 
 article.tweet .fa-flag:hover {
