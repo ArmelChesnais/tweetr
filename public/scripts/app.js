@@ -58,34 +58,50 @@ function addTweet( tweetObj ) {
 }
 
 function renderTweets ( data ) {
-
   data.forEach( function( tweetData ) {
     addTweet(tweetData);
   });
 }
 
+function loadTweets() {
+  $.ajax({
+    url: '/tweets',
+    method: 'GET',
+    success: renderTweets
+  });
+}
+
+function checkSubmission() {
+  const text = $('.new-tweet').find('textarea').val();
+  if ( (text === "") || (text === null) ) {
+    throw new Error("Please enter a message.");
+  } else if ( text.length > MAXCHAR ) {
+    throw new Error("Message too long.")
+  }
+}
+
 $(document).ready( function() {
 
-  $.ajax({
-    url: '/tweets/',
-    method: 'GET'
-  }).done( (initialData) => {
-    renderTweets(initialData);
-  });
+
+  loadTweets();
 
 
-
-  $('.new-tweet').on('submit', (event) => {
-
+  $('.new-tweet').on('submit', function (event) {
     event.preventDefault();
+    $(this).find('textarea').focus();
 
-     $.ajax({
-      url: '/tweets/',
-      method: 'POST',
-      data: $('.new-tweet form').serialize()
+    try {
+      checkSubmission();
+
+      $.ajax({
+        url: '/tweets/',
+        method: 'POST',
+        data: $(this).find('form').serialize()
+      });
     }
-
-    );
+    catch (err) {
+      $(this).find('.warning').finish().fadeIn(700).text(err.message).fadeOut(1100);
+    }
 
   });
 });

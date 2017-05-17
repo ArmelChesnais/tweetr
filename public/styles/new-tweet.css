@@ -18,6 +18,12 @@
 }
 
 .new-tweet input {
+  display: inline-block;
+}
+
+.new-tweet .warning {
+  display: none;
+  /*opacity: 0;*/
 }
 
 .new-tweet .counter {
