@@ -54,7 +54,7 @@ function createTweetElement( tweetObj ) {
 
 function addTweet( tweetObj ) {
   let $tweet = createTweetElement(tweetObj);
-  $('#tweets-container').prepend($tweet);
+  $('#tweets-container').append($tweet);
 }
 
 function renderTweets ( data ) {
@@ -99,6 +99,7 @@ $(document).ready( function() {
   $('.new-tweet').on('submit', function (event) {
     event.preventDefault();
     $(this).find('textarea').focus();
+    $(this).find('textarea').trigger('input');
 
     try {
       checkSubmission();
