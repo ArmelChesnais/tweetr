@@ -11,7 +11,7 @@ function getCurrChars ( fieldObj ) {
 
 $(document).ready( function() {
 
-  $('.new-tweet').on('input', 'textarea', function(event) {
+  $('.new-tweet').find('textarea').on('input keypress', function(event) {
     remainingChar = getRemainingChars( getCurrChars(this) );
     //let remainingChar = MAXCHAR - $(this).val().length;
     let counter = $(this).parent().find('.counter');

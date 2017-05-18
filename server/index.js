@@ -1,7 +1,5 @@
 "use strict";
 
-// Basic express setup:
-
 const PORT          = 8080;
 const MONGODB_URI   = "mongodb://localhost:27017/tweeter";
 const express       = require("express");
@@ -14,12 +12,6 @@ app.use(express.static("public"));
 
 
 // The `data-helpers` module provides an interface to the database of tweets.
-// This simple interface layer has a big benefit: we could switch out the
-// actual database it uses and see little to no changes elsewhere in the code
-// (hint hint).
-//
-// Because it exports a function that expects the `db` as a parameter, we can
-// require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(MongoClient, MONGODB_URI);
 
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
