@@ -6,6 +6,9 @@ It allows users to make and view tweets as a single page application. Updates ar
 
 Tweets are shown below the new tweet form, and highlight when moused over.
 
+!["Screenshot of tweets and highlighting"](https://github.com/ArmelChesnais/tweetr/blob/master/docs/composing.png?raw=true)
+!["Screenshot of composing a tweet"](https://github.com/ArmelChesnais/tweetr/blob/master/docs/tweet_highlight.png?raw=true)
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
